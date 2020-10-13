@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     float moveDirection = 0;
     bool isGrounded = false;
     Vector3 cameraPos;
-    Rigidbody2D r2d;
+    Rigidbody2D rb2D;
     Collider2D mainCollider;
     // Check every collider except Player and Ignore Raycast
     LayerMask layerMask = ~(1 << 2 | 1 << 8);
@@ -26,11 +26,11 @@ public class Movement : MonoBehaviour
     void Start()
     {
         t = transform;
-        r2d = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
-        r2d.freezeRotation = true;
-        r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        r2d.gravityScale = gravityScale;
+        rb2D.freezeRotation = true;
+        rb2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        rb2D.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
         gameObject.layer = 8;
 
@@ -41,21 +41,40 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || r2d.velocity.x > 0.01f))
+        MovementControls();
+        Jumping();
+        FaceDirection();
+    }
+
+    void MovementControls()
+    {
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
         }
-        else
+        else if (isGrounded || rb2D.velocity.magnitude < 0.01f)
         {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
-            {
                 moveDirection = 0;
-            }
+        }
+    }
+
+    void Jumping()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+        {
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpHeight);
         }
 
-        // Change facing direction
-        if (moveDirection != 0)
+        // Camera follow
+        if (mainCamera)
+            mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
+    }
+
+    void FaceDirection()
+    {
+        if (moveDirection == 0) return;
+
+        else
         {
             if (moveDirection > 0 && !facingRight)
             {
@@ -68,29 +87,20 @@ public class Movement : MonoBehaviour
                 t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
             }
         }
-
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
-        {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
-        }
-
-        // Camera follow
-        if (mainCamera)
-            mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
     }
 
-    void FixedUpdate()
+    void GroundCheck()
     {
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
-        // Check if player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheckPos, 0.23f, layerMask);
+        Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, 0.23f, 0), isGrounded ? Color.green : Color.red);
+    }
+    void FixedUpdate()
+    {
+        GroundCheck();
 
         // Apply movement velocity
-        r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
-
-        // Simple debug
-        Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, 0.23f, 0), isGrounded ? Color.green : Color.red);
+        rb2D.velocity = new Vector2((moveDirection) * maxSpeed, rb2D.velocity.y);
     }
 }
