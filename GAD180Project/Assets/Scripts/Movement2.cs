@@ -8,15 +8,26 @@ public class Movement2 : MonoBehaviour
     Vector2 movementForce;
     [SerializeField] float maxSpeed;
     [SerializeField] float jumpHeight;
-    bool grounded;
+    [SerializeField] bool grounded;
     
     private void Start()
     {
         rg2d = GetComponent<Rigidbody2D>();
         movementForce = new Vector2(1f, 0f);
         maxSpeed = 25f;
-        jumpHeight = 10f;
+        jumpHeight = 17f;
         grounded = true;
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.name == "Platform")
+        {
+            grounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        grounded = false;
     }
     private void movement()
     {
