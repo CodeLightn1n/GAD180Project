@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    private GameObject player;
     Vector2 playerPos;
     [SerializeField] float EnemySpeed = 15f;
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
     private void Update()
     {
         playerPos = player.gameObject.transform.position;
