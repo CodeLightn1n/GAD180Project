@@ -24,10 +24,10 @@ public class Movement2 : MonoBehaviour
         {
             grounded = true;
         }
-        else
-        {
-            grounded = false;
-        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        grounded = false;
     }
     private void movement()
     {
