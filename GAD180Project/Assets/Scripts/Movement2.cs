@@ -18,18 +18,8 @@ public class Movement2 : MonoBehaviour
         jumpHeight = 17f;
         grounded = true;
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.name == "Platform")
-        {
-            grounded = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        grounded = false;
-    }
-    private void movement()
+    
+    private void Movement()
     {
         //Move Right
         if (Input.GetKey(KeyCode.D))
@@ -48,16 +38,23 @@ public class Movement2 : MonoBehaviour
         {
             rg2d.velocity += rg2d.velocity.normalized * maxSpeed;
         }
-        if(grounded)
+    }
+    private void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.W) && grounded == true)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                rg2d.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-            }
+            grounded = false;
+            rg2d.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
         }
+        if(rg2d.velocity.y == 0)
+        {
+            grounded = true;
+        }
+
     }
     private void FixedUpdate()
     {
-        movement();
+        Movement();
+        Jump();
     }
 }
