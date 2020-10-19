@@ -8,13 +8,24 @@ public class Attack : MonoBehaviour
     [SerializeField] Transform attackPoint;
     [SerializeField]LayerMask enemyLayer;
     float attackRange = 0.75f;
+    Rigidbody2D rg2d;
+    Vector2 movementForce;
 
+    private void Start()
+    {
+        rg2d = GetComponent<Rigidbody2D>();
+        movementForce = new Vector2(15f, 0f);
+    }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             BasicAttack();
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            DashAttack();
         }
     }
 
@@ -27,6 +38,11 @@ public class Attack : MonoBehaviour
             enemy.GetComponent<Health>().GetHit();
             Debug.Log("Smacked " + enemy.name);
         }
+    }
+
+    void DashAttack()
+    {
+
     }
 
     private void OnDrawGizmosSelected()
