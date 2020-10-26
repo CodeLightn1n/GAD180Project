@@ -32,7 +32,17 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.gameObject.layer == 9)
+        {
+            if(MovingLeft == false)
+            {
+                MovingLeft = true;
+            }
+            if(MovingLeft == true)
+            {
+                MovingLeft = false;
+            }
+        }
     }
     private void Patrol()
     {
