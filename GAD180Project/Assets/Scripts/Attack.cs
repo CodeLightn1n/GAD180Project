@@ -11,7 +11,8 @@ public class Attack : MonoBehaviour
     Rigidbody2D rb2d;
     Vector2 movementForce;
     Camera cam;
-
+    Vector2 Direction;
+    
 
     private void Start()
     {
@@ -45,7 +46,11 @@ public class Attack : MonoBehaviour
 
     void DashAttack()
     {
-
+        float y = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        Direction = new Vector2(x, y);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, 5f);
+        Debug.DrawRay(transform.position, Direction, Color.green, 5f);
     }
 
 private void OnDrawGizmosSelected()
