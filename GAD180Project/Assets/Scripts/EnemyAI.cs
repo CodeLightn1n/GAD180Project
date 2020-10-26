@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private GameObject Player;
-    [SerializeField] GameObject[] PatrolPoints;
+    public bool MovingLeft;
     Vector2 PlayerPos;
     [SerializeField] float EnemySpeed = 15f;
     Transform EnemyT;
@@ -18,7 +18,6 @@ public class EnemyAI : MonoBehaviour
     {
         PlayerPos = Player.gameObject.transform.position;
         Patrol();
-        
     }
     private void TrackPlayer()
     {
@@ -31,26 +30,19 @@ public class EnemyAI : MonoBehaviour
             MoveRight();
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
     private void Patrol()
     {
-        foreach(GameObject point in PatrolPoints)
+        if(MovingLeft == true)
         {
-            Vector2 pointX = point.gameObject.transform.position;
-            // while(pointX.x != EnemyT.position.x)
-            // {
-            //     if(pointX.x < EnemyT.position.x)
-            //     {
-            //         MoveLeft();
-            //     }
-            //     else if(pointX.x > EnemyT.position.x)
-            //     {
-            //         MoveRight();
-            //     }
-            //     else
-            //     {
-            //         break
-            //     }
-            // }
+            MoveLeft();
+        }
+        else
+        {
+            MoveRight();
         }
     }
     private void MoveLeft()
@@ -61,4 +53,5 @@ public class EnemyAI : MonoBehaviour
     {
         EnemyT.Translate(Vector2.right * EnemySpeed * Time.deltaTime);
     }
+    
 }
