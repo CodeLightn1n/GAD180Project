@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private GameObject Player;
+    [SerializeField] PlayerDetection PD;
     public bool MovingLeft;
     Vector2 PlayerPos;
     [SerializeField] float EnemySpeed = 15f;
@@ -17,7 +18,14 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         PlayerPos = Player.gameObject.transform.position;
-        Patrol();
+        if(PD.PlayerCollided)
+        {
+            TrackPlayer();
+        }
+        else
+        {
+            Patrol();
+        }
     }
     private void TrackPlayer()
     {
@@ -32,13 +40,13 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 9)
+        if (collision.gameObject.layer == 9)
         {
-            if(MovingLeft == false)
+            if (MovingLeft == false)
             {
                 MovingLeft = true;
             }
-            if(MovingLeft == true)
+            else
             {
                 MovingLeft = false;
             }
