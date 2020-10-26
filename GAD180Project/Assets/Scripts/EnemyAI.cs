@@ -4,27 +4,61 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private GameObject player;
-    Vector2 playerPos;
+    private GameObject Player;
+    [SerializeField] GameObject[] PatrolPoints;
+    Vector2 PlayerPos;
     [SerializeField] float EnemySpeed = 15f;
+    Transform EnemyT;
     private void Start()
     {
-        player = GameObject.Find("Player");
+        Player = GameObject.Find("Player");
+        EnemyT = this.gameObject.transform;
     }
     private void Update()
     {
-        playerPos = player.gameObject.transform.position;
-        Movement();
+        PlayerPos = Player.gameObject.transform.position;
+        Patrol();
+        
     }
-    private void Movement()
+    private void TrackPlayer()
     {
-        if(playerPos.x < this.gameObject.transform.position.x)
+        if(PlayerPos.x < this.gameObject.transform.position.x)
         {
-            this.gameObject.transform.Translate(Vector2.left * EnemySpeed * Time.deltaTime);
+            MoveLeft();
         }
         else
         {
-            this.gameObject.transform.Translate(Vector2.right * EnemySpeed * Time.deltaTime);
+            MoveRight();
         }
+    }
+    private void Patrol()
+    {
+        foreach(GameObject point in PatrolPoints)
+        {
+            Vector2 pointX = point.gameObject.transform.position;
+            // while(pointX.x != EnemyT.position.x)
+            // {
+            //     if(pointX.x < EnemyT.position.x)
+            //     {
+            //         MoveLeft();
+            //     }
+            //     else if(pointX.x > EnemyT.position.x)
+            //     {
+            //         MoveRight();
+            //     }
+            //     else
+            //     {
+            //         break
+            //     }
+            // }
+        }
+    }
+    private void MoveLeft()
+    {
+        EnemyT.Translate(Vector2.left * EnemySpeed * Time.deltaTime);
+    }
+    private void MoveRight()
+    {
+        EnemyT.Translate(Vector2.right * EnemySpeed * Time.deltaTime);
     }
 }
