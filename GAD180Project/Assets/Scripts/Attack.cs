@@ -8,13 +8,16 @@ public class Attack : MonoBehaviour
     [SerializeField] Transform attackPoint;
     [SerializeField]LayerMask enemyLayer;
     float attackRange = 0.75f;
-    Rigidbody2D rg2d;
+    Rigidbody2D rb2d;
     Vector2 movementForce;
+    Camera cam;
+
 
     private void Start()
     {
-        rg2d = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         movementForce = new Vector2(15f, 0f);
+        cam = Camera.main;
     }
 
     private void Update()
@@ -45,7 +48,7 @@ public class Attack : MonoBehaviour
 
     }
 
-    private void OnDrawGizmosSelected()
+private void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
 
