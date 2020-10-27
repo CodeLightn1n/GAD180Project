@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1989263155731668947}
   - component: {fileID: 1989263155731668946}
   - component: {fileID: 1989263155731668949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,6 +52,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -202,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1989263155764977885}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
