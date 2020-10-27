@@ -12,13 +12,16 @@ public class Attack : MonoBehaviour
     Vector2 movementForce;
     Camera cam;
     Vector2 Direction;
-    
+    Transform PlayerT;
+    public float DashDistance;
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         movementForce = new Vector2(15f, 0f);
         cam = Camera.main;
+        PlayerT = this.gameObject.transform;
+        DashDistance = 10f;
     }
 
     private void Update()
@@ -49,8 +52,10 @@ public class Attack : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
         Direction = new Vector2(x, y);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, 5f);
-        Debug.DrawRay(transform.position, Direction, Color.green, 5f);
+        Vector3 rayCastOffSet = new Vector3(PlayerT.localScale.x, 0f, 0f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
+        Debug.DrawRay(transform.position + rayCastOffSet, Direction, Color.green, DashDistance);
+        this.gameObject.transform.Translate(Direction * DashDistance);
     }
 
 private void OnDrawGizmosSelected()
