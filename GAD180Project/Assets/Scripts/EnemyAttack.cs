@@ -9,21 +9,13 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     float attackRange = 0.75f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (collision.gameObject.name == "Player")
+        {
+            StartCoroutine(DelayAttack());
+        }
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-
-
-
-
     public void Attack()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
@@ -40,5 +32,10 @@ public class EnemyAttack : MonoBehaviour
         if (attackPoint == null) return;
 
         Gizmos.DrawSphere(attackPoint.position, attackRange);
+    }
+    IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Attack();
     }
 }
