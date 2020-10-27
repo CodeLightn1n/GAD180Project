@@ -66,10 +66,12 @@ public class EnemyAI : MonoBehaviour
     private void MoveLeft()
     {
         EnemyT.Translate(Vector2.left * EnemySpeed * Time.deltaTime);
+        this.gameObject.transform.localScale = new Vector2(-5f, 5f);
     }
     private void MoveRight()
     {
         EnemyT.Translate(Vector2.right * EnemySpeed * Time.deltaTime);
+        this.gameObject.transform.localScale = new Vector2(5f, 5f);
     }
     
 }

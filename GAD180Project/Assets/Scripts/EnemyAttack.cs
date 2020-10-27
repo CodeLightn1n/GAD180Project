@@ -5,30 +5,40 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
 
-    Physics2D circleOfLife;
-    Collider2D mainCollider;
-    LayerMask layerMask = (8);
+    [SerializeField] Transform attackPoint;
+    [SerializeField] LayerMask playerLayer;
+    float attackRange = 0.75f;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCollider = GetComponent<Collider2D>();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Bounds colliderBounds = mainCollider.bounds;
-        Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 2f, 0.1f, 0);
-        if (Physics2D.OverlapCircle(groundCheckPos, 0.23f, layerMask))
-        {
-            Attack();
-        }
+
     }
 
 
-    void Attack()
+
+
+    public void Attack()
     {
-        Debug.Log("Beep Boop");
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider2D player in hitPlayer)
+        {
+            player.GetComponent<Health>().GetHit();
+            Debug.Log("Smacked " + player.name);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+
+        Gizmos.DrawSphere(attackPoint.position, attackRange);
     }
 }
