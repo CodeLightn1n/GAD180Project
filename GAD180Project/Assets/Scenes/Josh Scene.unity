@@ -124,6 +124,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &245468849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3023723650105486025, guid: df045ae415623084d8f939aa7239b87a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7344358145298808464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +445,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd7df14eeef9434b88b25417b6709db, type: 3}
+--- !u!4 &1695694873 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3023723650105486025, guid: df045ae415623084d8f939aa7239b87a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1834436538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1834436538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,6 +518,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: CanAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: PlayerLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: AttackPoint
+      value: 
+      objectReference: {fileID: 1695694873}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: AttackPointT
+      value: 
+      objectReference: {fileID: 1695694873}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df045ae415623084d8f939aa7239b87a, type: 3}
 --- !u!1001 &1989263155807745326
@@ -569,6 +601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989263155731668946, guid: cf8c74e58e8f7a145bb929cd52491c7e,
+        type: 3}
+      propertyPath: DashDistance
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1989263155731668948, guid: cf8c74e58e8f7a145bb929cd52491c7e,
         type: 3}
@@ -728,6 +765,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: CanAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: PlayerLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: AttackPoint
+      value: 
+      objectReference: {fileID: 245468849}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: AttackPointT
+      value: 
+      objectReference: {fileID: 245468849}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df045ae415623084d8f939aa7239b87a, type: 3}
 --- !u!1001 &8733957065458428334

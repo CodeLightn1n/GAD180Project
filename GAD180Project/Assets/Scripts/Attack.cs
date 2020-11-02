@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
         Direction = new Vector2(x, y);
         Vector3 rayCastOffSet = new Vector3(PlayerT.localScale.x, 0f, 0f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
-        Debug.DrawRay(transform.position + rayCastOffSet, Direction, Color.green, DashDistance);
+        Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
     }
 

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-
-    [SerializeField] Transform AttackPoint;
+    [SerializeField] Transform AttackPointT;
     [SerializeField] LayerMask PlayerLayer;
     float AttackRange = 0.75f;
     public bool CanAttack;
@@ -19,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
     }
     public void Attack()
     {
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, PlayerLayer);
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPointT.position, AttackRange, PlayerLayer);
 
         foreach (Collider2D player in hitPlayer)
         {
@@ -30,13 +29,13 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (AttackPoint== null) return;
+        if (AttackPointT== null) return;
 
-        Gizmos.DrawSphere(AttackPoint.position, AttackRange);
+        Gizmos.DrawSphere(AttackPointT.position, AttackRange);
     }
     IEnumerator DelayAttack()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(100f);
         if(CanAttack)
         {
             Attack();
