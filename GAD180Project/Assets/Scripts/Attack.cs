@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
     [SerializeField] Transform attackPoint;
     [SerializeField]LayerMask enemyLayer;
     float attackRange = 0.75f;
+    Collider2D[] hitEnemies;
     Rigidbody2D rb2d;
     Vector2 movementForce;
     Camera cam;
@@ -38,7 +39,7 @@ public class Attack : MonoBehaviour
 
     void BasicAttack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         
         foreach(Collider2D enemy in hitEnemies)
         {
@@ -56,6 +57,10 @@ public class Attack : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
         Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
+        if(hit.collider.gameObject.tag == "Enemy")
+        {
+
+        }
     }
 
 private void OnDrawGizmosSelected()
