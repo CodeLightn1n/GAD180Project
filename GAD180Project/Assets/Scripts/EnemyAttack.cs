@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     Animation RobotLaserAttack;
     float AttackRange = 0.75f;
     public bool CanAttack;
-    public Anim anim;
+    public Animator anim;
     private void Start()
     {
         
