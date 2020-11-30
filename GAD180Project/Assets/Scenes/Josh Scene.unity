@@ -140,7 +140,7 @@ Animator:
   m_GameObject: {fileID: 81301482}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bdba1f79ebd871145a54f1cbc2275cca, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2d8a54e3a24adeb4a8dad3d2b04dc662, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -235,7 +235,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.18422927, g: 0.28114572, b: 0.5660378, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -689,6 +689,11 @@ PrefabInstance:
       propertyPath: AttackPointT
       value: 
       objectReference: {fileID: 1695694873}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 81301483}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df045ae415623084d8f939aa7239b87a, type: 3}
 --- !u!1 &2050844580 stripped
@@ -971,6 +976,11 @@ PrefabInstance:
       propertyPath: AttackPointT
       value: 
       objectReference: {fileID: 245468849}
+    - target: {fileID: 5850836756912716183, guid: df045ae415623084d8f939aa7239b87a,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1748268899}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df045ae415623084d8f939aa7239b87a, type: 3}
 --- !u!1001 &8733957065458428334

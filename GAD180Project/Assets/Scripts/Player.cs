@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    GameManager gm;
+    public GameObject gmObject;
+    [SerializeField] GameManager gm;
     private void Start()
     {
-        if(gm != null)
+        if(gmObject != null)
         {
-            gm = GetComponent<GameManager>();
+            gm = gmObject.GetComponent<GameManager>();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
