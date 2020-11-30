@@ -6,12 +6,18 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] Transform AttackPointT;
     [SerializeField] LayerMask PlayerLayer;
+    Animation RobotLaserAttack;
     float AttackRange = 0.75f;
     public bool CanAttack;
+    public Anim anim;
+    private void Start()
+    {
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player" && CanAttack)
         {
             StartCoroutine(DelayAttack());
         }
@@ -35,10 +41,7 @@ public class EnemyAttack : MonoBehaviour
     }
     IEnumerator DelayAttack()
     {
-        yield return new WaitForSeconds(100f);
-        if(CanAttack)
-        {
-            Attack();
-        }
+        yield return new WaitForSeconds(2);
+        Attack();
     }
 }
