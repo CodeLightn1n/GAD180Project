@@ -9,11 +9,7 @@ public class EnemyAttack : MonoBehaviour
     Animation RobotLaserAttack;
     float AttackRange = 0.75f;
     public bool CanAttack;
-    public Anim anim;
-    private void Start()
-    {
-        
-    }
+    public Animator anim;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,5 +39,15 @@ public class EnemyAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Attack();
+    }
+    IEnumerator onDeath()
+    {
+        anim.SetBool("Died", true);
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
+    }
+    public void Death()
+    {
+        StartCoroutine(onDeath());
     }
 }

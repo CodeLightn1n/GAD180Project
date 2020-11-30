@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private GameObject Player;
-    [SerializeField] PlayerDetection PD;
+    public PlayerDetection PD;
     public bool MovingLeft;
     Vector2 PlayerPos;
-    [SerializeField] float EnemySpeed = 15f;
+    public float EnemySpeed = 15f;
     Transform EnemyT;
+    public Animator anim;
+    public Health health;
     private void Start()
     {
         Player = GameObject.Find("Player");
@@ -73,5 +75,14 @@ public class EnemyAI : MonoBehaviour
         EnemyT.Translate(Vector2.right * EnemySpeed * Time.deltaTime);
         this.gameObject.transform.localScale = new Vector2(5f, 5f);
     }
-    
+    IEnumerator BeginDeath()
+    {
+        anim.SetBool("Died", true);
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
+    }
+    public void Death()
+    {
+        StartCoroutine(BeginDeath());
+    }
 }
