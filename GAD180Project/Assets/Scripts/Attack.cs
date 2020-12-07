@@ -58,13 +58,10 @@ public class Attack : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
         if (hit.collider.gameObject.tag == "Enemy")
         {
-<<<<<<< Updated upstream
             Debug.Log("You hit the enemy");
-=======
             health = hit.collider.gameObject.GetComponent<Health>();
             health.GetHit();
             Debug.Log(hit.collider.gameObject.name);
->>>>>>> Stashed changes
         }
         Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
