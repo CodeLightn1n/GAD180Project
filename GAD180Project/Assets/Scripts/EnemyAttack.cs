@@ -10,10 +10,13 @@ public class EnemyAttack : MonoBehaviour
     float AttackRange = 0.75f;
     public bool CanAttack;
     public Animator anim;
+<<<<<<< HEAD
     private void Start()
     {
         
     }
+=======
+>>>>>>> e76673a77fe5fa40020b8395f26c681cf30f21af
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,5 +46,15 @@ public class EnemyAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Attack();
+    }
+    IEnumerator onDeath()
+    {
+        anim.SetBool("Died", true);
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
+    }
+    public void Death()
+    {
+        StartCoroutine(onDeath());
     }
 }
