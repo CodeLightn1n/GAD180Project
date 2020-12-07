@@ -10,13 +10,11 @@ public class EnemyAttack : MonoBehaviour
     float AttackRange = 0.75f;
     public bool CanAttack;
     public Animator anim;
-<<<<<<< HEAD
+
     private void Start()
     {
         
     }
-=======
->>>>>>> e76673a77fe5fa40020b8395f26c681cf30f21af
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
