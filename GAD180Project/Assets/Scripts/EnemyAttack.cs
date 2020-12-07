@@ -27,12 +27,17 @@ public class EnemyAttack : MonoBehaviour
     }
     public void Attack()
     {
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPointT.position, AttackRange, PlayerLayer);
-
-        foreach (Collider2D player in hitPlayer)
+        if(this.gameObject != null)
         {
-            player.GetComponent<Health>().GetHit();
-            Debug.Log("Smacked " + player.name);
+            anim.SetBool("CanAttack", true);
+            anim.Play("RobotLaserAttackAnim");
+            Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPointT.position, AttackRange, PlayerLayer);
+
+            foreach (Collider2D player in hitPlayer)
+            {
+                player.GetComponent<Health>().GetHit();
+                Debug.Log("Smacked " + player.name);
+            }
         }
     }
 

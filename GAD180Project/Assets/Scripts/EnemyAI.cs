@@ -77,9 +77,18 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator BeginDeath()
     {
-        anim.SetBool("Died", true);
+        EnemySpeed = 0f;
+        if(anim.gameObject.activeSelf)
+        {
+            Debug.Log("Animator is Active");
+        }
+        anim.enabled = true;
+        anim.SetTrigger("Died");
+        anim.Play("RobotDeathAnim");
+        
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
+
     }
     public void Death()
     {
