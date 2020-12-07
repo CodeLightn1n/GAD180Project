@@ -22,8 +22,13 @@ public class Player : MonoBehaviour
             Debug.Log("Saved Respawn Point");
         }
     }
-    private void OnDestroy()
+    public void Death()
     {
-        gm.PlayerDied();
+        Destroy(this.gameObject);
     }
+    /*IEnumerator BeginDeath()
+    {
+        Destroy(this.gameObject);
+        yield return new WaitForSeconds(1);
+    }*/
 }
