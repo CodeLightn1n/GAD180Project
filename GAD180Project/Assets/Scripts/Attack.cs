@@ -15,6 +15,7 @@ public class Attack : MonoBehaviour
     Vector2 Direction;
     Transform PlayerT;
     public float DashDistance;
+    public Health health;
 
     private void Start()
     {
@@ -55,12 +56,19 @@ public class Attack : MonoBehaviour
         Direction = new Vector2(x, y);
         Vector3 rayCastOffSet = new Vector3(PlayerT.localScale.x, 0f, 0f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
+        if (hit.collider.gameObject.tag == "Enemy")
+        {
+<<<<<<< Updated upstream
+            Debug.Log("You hit the enemy");
+=======
+            health = hit.collider.gameObject.GetComponent<Health>();
+            health.GetHit();
+            Debug.Log(hit.collider.gameObject.name);
+>>>>>>> Stashed changes
+        }
         Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
-        if(hit.collider.gameObject.tag == "Enemy")
-        {
-
-        }
+        
     }
 
 private void OnDrawGizmosSelected()
