@@ -27,6 +27,7 @@ public class EnemyAttack : MonoBehaviour
         if(this.gameObject != null)
         {
             anim.SetBool("CanAttack", true);
+            anim.Play("RobotLaserAttackAnim");
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPointT.position, AttackRange, PlayerLayer);
 
             foreach (Collider2D player in hitPlayer)
