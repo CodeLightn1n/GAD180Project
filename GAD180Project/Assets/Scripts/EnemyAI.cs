@@ -82,7 +82,8 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator BeginDeath()
     {
-        EnemySpeed = 0f;    
+        EnemySpeed = 0f;
+        GetComponent<EnemyAttack>().CanAttack = false;
         if(anim.gameObject.activeSelf)
         {
             Debug.Log("Animator is Active");
