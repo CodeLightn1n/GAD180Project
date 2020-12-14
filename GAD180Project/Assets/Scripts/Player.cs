@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public void Death()
     {
         Destroy(this.gameObject);
+        gm.PlayerDied();
     }
     /*IEnumerator BeginDeath()
     {
