@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform playerPrefab;
+    public GameObject playerPrefab;
     public GameObject currentRespawn;
+    GameObject newPlayer;
     private void Start()
     {
 
     }
     public void PlayerDied()
     {
-        Instantiate(playerPrefab, currentRespawn.transform.position, Quaternion.identity);
+        newPlayer = Instantiate(playerPrefab, currentRespawn.transform.position, Quaternion.identity);
+        newPlayer.name = "Player";
     }
 }
