@@ -55,6 +55,11 @@ public class Movement2 : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        
+    }
+
+    private void Update()
+    {
         Jump();
     }
 }
