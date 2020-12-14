@@ -51,7 +51,6 @@ public class Attack : MonoBehaviour
 
     void DashAttack()
     {
-        Debug.Log("Dash Attack");
         float y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
         Direction = new Vector2(x, y);
@@ -66,7 +65,7 @@ public class Attack : MonoBehaviour
         }
         Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
-        
+        Debug.Log("the ray hit : " + hit.collider);
     }
 
 private void OnDrawGizmosSelected()
