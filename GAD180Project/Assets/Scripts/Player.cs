@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     GameManager gm;
     private void Start()
     {
+        gmObject = GameObject.Find("GameManager");
         if(gmObject != null)
         {
             gm = gmObject.GetComponent<GameManager>();

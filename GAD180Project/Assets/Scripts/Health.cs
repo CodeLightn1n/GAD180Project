@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     public int HP;
     public bool Dead;
+    public UnityEvent onDeath;
     public void Start()
     {
         HP = 1;
@@ -22,6 +24,6 @@ public class Health : MonoBehaviour
     }
     public void Die()
     {
-        BroadcastMessage("Death");
+        onDeath.Invoke();
     }
 }
