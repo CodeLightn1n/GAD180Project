@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameManager gm;
     private void Start()
     {
+        gmObject = GameObject.Find("GameManager");
         if(gmObject != null)
         {
             gm = gmObject.GetComponent<GameManager>();

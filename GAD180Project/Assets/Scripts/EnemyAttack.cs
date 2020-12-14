@@ -33,8 +33,8 @@ public class EnemyAttack : MonoBehaviour
 
             foreach (Collider2D player in hitPlayer)
             {
-                player.GetComponent<Health>().GetHit();
                 Debug.Log("Smacked " + player.name);
+                player.GetComponent<Health>().GetHit();
             }
         }
     }
