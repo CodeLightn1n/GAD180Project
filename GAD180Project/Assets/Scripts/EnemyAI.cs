@@ -19,6 +19,10 @@ public class EnemyAI : MonoBehaviour
     }
     private void Update()
     {
+        if(Player == null)
+        {
+            FindPlayer();
+        }
         PlayerPos = Player.gameObject.transform.position;
         if(PD.PlayerCollided)
         {
@@ -93,5 +97,9 @@ public class EnemyAI : MonoBehaviour
     public void Death()
     {
         StartCoroutine(BeginDeath());
+    }
+    private void FindPlayer()
+    {
+        Player = GameObject.Find("Player");
     }
 }
