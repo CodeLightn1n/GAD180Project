@@ -51,12 +51,13 @@ public class Attack : MonoBehaviour
 
     void DashAttack()
     {
+        Debug.Log("Dash Attack");
         float y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
         Direction = new Vector2(x, y);
         Vector3 rayCastOffSet = new Vector3(PlayerT.localScale.x, 0f, 0f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
-        if (hit.collider.gameObject.tag == "Enemy")
+        if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
             Debug.Log("You hit the enemy");
             health = hit.collider.gameObject.GetComponent<Health>();

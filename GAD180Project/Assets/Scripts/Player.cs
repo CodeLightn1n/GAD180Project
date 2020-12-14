@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject gmObject;
-    [SerializeField] GameManager gm;
+    GameManager gm;
     private void Start()
     {
         if(gmObject != null)
