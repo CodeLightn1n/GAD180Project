@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
         if(Player == null)
         {
             FindPlayer();
+            Debug.Log("Find the player");
         }
         PlayerPos = Player.gameObject.transform.position;
         if(PD.PlayerCollided)
