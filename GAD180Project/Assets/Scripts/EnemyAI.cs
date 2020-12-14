@@ -12,10 +12,12 @@ public class EnemyAI : MonoBehaviour
     Transform EnemyT;
     public Animator anim;
     public Health health;
+    public EnemyAttack EA;
     private void Start()
     {
         Player = GameObject.Find("Player");
         EnemyT = this.gameObject.transform;
+        EA = GetComponent<EnemyAttack>();
     }
     private void Update()
     {
@@ -83,7 +85,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator BeginDeath()
     {
         EnemySpeed = 0f;
-        GetComponent<EnemyAttack>().CanAttack = false;
+        EA.CanAttack = false;
         if(anim.gameObject.activeSelf)
         {
             Debug.Log("Animator is Active");
