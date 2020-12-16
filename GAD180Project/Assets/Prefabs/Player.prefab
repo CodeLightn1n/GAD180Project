@@ -184,6 +184,9 @@ MonoBehaviour:
     m_Bits: 1024
   DashDistance: 0
   health: {fileID: 0}
+  IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 2871
 --- !u!114 &1989263155731668949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gmObject: {fileID: 0}
-  gm: {fileID: 0}
 --- !u!1 &1989263155764977884
 GameObject:
   m_ObjectHideFlags: 0
