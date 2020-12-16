@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 704391605}
   - component: {fileID: 704391606}
   - component: {fileID: 704391607}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PlayerDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3023723650105486025}
   - component: {fileID: 940072335997882311}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +252,7 @@ MonoBehaviour:
   EnemySpeed: 5
   anim: {fileID: 1748268899}
   health: {fileID: -1245039465793360115}
+  EA: {fileID: 0}
 --- !u!114 &-1245039465793360115
 MonoBehaviour:
   m_ObjectHideFlags: 0

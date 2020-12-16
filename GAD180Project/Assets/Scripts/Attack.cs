@@ -16,6 +16,7 @@ public class Attack : MonoBehaviour
     Transform PlayerT;
     public float DashDistance;
     public Health health;
+    public LayerMask IgnoreLayers;
 
     private void Start()
     {
@@ -51,12 +52,11 @@ public class Attack : MonoBehaviour
 
     void DashAttack()
     {
-        Debug.Log("Dash Attack");
         float y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
         Direction = new Vector2(x, y);
         Vector3 rayCastOffSet = new Vector3(PlayerT.localScale.x, 0f, 0f);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + rayCastOffSet, Direction, DashDistance, ~IgnoreLayers);
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
             Debug.Log("You hit the enemy");
@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
         }
         Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
-        
+        Debug.Log("the ray hit : " + hit.collider.name);
     }
 
 private void OnDrawGizmosSelected()
