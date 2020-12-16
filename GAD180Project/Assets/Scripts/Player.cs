@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Collided with : " + collision.name);
         if (collision.gameObject.layer == 11)
         {
             gm.currentRespawn = collision.gameObject;
