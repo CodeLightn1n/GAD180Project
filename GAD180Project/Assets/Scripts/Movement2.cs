@@ -6,9 +6,9 @@ public class Movement2 : MonoBehaviour
 {
     Rigidbody2D rg2d;
     Vector2 movementForce;
-    [SerializeField] float maxSpeed;
-    [SerializeField] float jumpHeight;
-    [SerializeField] bool grounded;
+    public float maxSpeed;
+    public float jumpHeight;
+    bool grounded;
     
     private void Start()
     {

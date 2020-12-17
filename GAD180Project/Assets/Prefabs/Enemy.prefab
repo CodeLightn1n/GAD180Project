@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   Dead: 0
-  onDeath:
+  Death:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -1654404190736710885}

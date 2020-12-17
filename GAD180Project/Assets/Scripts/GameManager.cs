@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
-    public void PlayerDied()
+    public void RespawnPlayer()
     {
         newPlayer = Instantiate(playerPrefab, currentRespawn.transform.position, Quaternion.identity);
         newPlayer.name = "Player";

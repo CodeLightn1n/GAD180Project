@@ -5,10 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject gmObject;
-    GameManager gm;
+    public GameManager gm;
+    public Animator anim;
+    public Movement2 move;
     private void Start()
     {
         gmObject = GameObject.Find("GameManager");
+        move = GetComponent<Movement2>();
         if(gmObject != null)
         {
             gm = gmObject.GetComponent<GameManager>();
@@ -26,12 +29,27 @@ public class Player : MonoBehaviour
     }
     public void Death()
     {
-        Destroy(this.gameObject);
-        gm.PlayerDied();
+        
+        StartCoroutine(BeginDeath());
+        
     }
-    /*IEnumerator BeginDeath()
+    IEnumerator BeginDeath()
     {
+        
+        this.gameObject.layer = 10;
+        move.maxSpeed = 0f;
+        if(anim.gameObject.activeSelf)
+        {
+            Debug.Log("Animator is Active");
+        }
+        anim.enabled = true;
+        anim.SetTrigger("HasDied");
+        anim.Play("PlayerDeathAnim");
+        
+        yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
-        yield return new WaitForSeconds(1);
-    }*/
+
+        yield return new WaitForSeconds(2);
+        gm.RespawnPlayer();
+    }
 }

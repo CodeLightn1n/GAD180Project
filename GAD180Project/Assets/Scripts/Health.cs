@@ -7,11 +7,11 @@ public class Health : MonoBehaviour
 {
     public int HP;
     public bool Dead;
-    public UnityEvent onDeath;
+    public UnityEvent Death;
     public void Start()
     {
-        HP = 1;
         Dead = false;
+        HP = 1;
     }
     public void GetHit()
     {
@@ -19,11 +19,8 @@ public class Health : MonoBehaviour
         if(HP <= 0)
         {
             Dead = true;
-            Die();
+            Death.Invoke();
         }
     }
-    public void Die()
-    {
-        onDeath.Invoke();
-    }
+
 }
