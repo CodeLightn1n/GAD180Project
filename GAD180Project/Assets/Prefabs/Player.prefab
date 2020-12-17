@@ -152,21 +152,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   Dead: 0
-  onDeath:
+  Death:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8517794424399597616}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Death
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1989263155731668946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +176,7 @@ MonoBehaviour:
   IgnoreLayers:
     serializedVersion: 2
     m_Bits: 2871
+  Anim: {fileID: 273448425563852112}
 --- !u!114 &1989263155731668949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gmObject: {fileID: 0}
-  anim: {fileID: 0}
+  gm: {fileID: 0}
+  anim: {fileID: 273448425563852112}
   move: {fileID: 0}
 --- !u!95 &273448425563852112
 Animator:

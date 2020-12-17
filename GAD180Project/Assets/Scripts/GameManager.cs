@@ -7,12 +7,9 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject currentRespawn;
     GameObject newPlayer;
-    private void Start()
+    public IEnumerator RespawnPlayer()
     {
-
-    }
-    public void RespawnPlayer()
-    {
+        yield return new WaitForSeconds(2);
         newPlayer = Instantiate(playerPrefab, currentRespawn.transform.position, Quaternion.identity);
         newPlayer.name = "Player";
     }

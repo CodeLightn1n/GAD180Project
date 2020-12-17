@@ -17,6 +17,7 @@ public class Attack : MonoBehaviour
     public float DashDistance;
     public Health health;
     public LayerMask IgnoreLayers;
+    public Animator Anim;
 
     private void Start()
     {
@@ -42,7 +43,9 @@ public class Attack : MonoBehaviour
     void BasicAttack()
     {
         hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
-        
+
+        Anim.SetTrigger("Attacked");
+
         foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("Smacked " + enemy.name);
@@ -66,6 +69,9 @@ public class Attack : MonoBehaviour
         }
         Debug.DrawRay(transform.position + rayCastOffSet, Direction * DashDistance, Color.green, 5f);
         this.gameObject.transform.Translate(Direction * DashDistance);
+
+        Anim.Play("PlayerDashAnim");
+
         Debug.Log("the ray hit : " + hit.collider.name);
     }
 

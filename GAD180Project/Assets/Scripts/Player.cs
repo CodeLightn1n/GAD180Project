@@ -31,25 +31,23 @@ public class Player : MonoBehaviour
     {
         
         StartCoroutine(BeginDeath());
-        
+        StartCoroutine(gm.RespawnPlayer());
     }
     IEnumerator BeginDeath()
     {
         
         this.gameObject.layer = 10;
         move.maxSpeed = 0f;
-        if(anim.gameObject.activeSelf)
+
+        if(!anim.gameObject.activeSelf)
         {
-            Debug.Log("Animator is Active");
+            anim.enabled = true;
         }
-        anim.enabled = true;
+        
         anim.SetTrigger("HasDied");
         anim.Play("PlayerDeathAnim");
         
         yield return new WaitForSeconds(2);
-        Destroy(this.gameObject);
-
-        yield return new WaitForSeconds(2);
-        gm.RespawnPlayer();
+        Destroy(this.gameObject);       
     }
 }
