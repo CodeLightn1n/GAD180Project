@@ -27,8 +27,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if(this.gameObject != null)
         {
-            anim.SetBool("CanAttack", true);
-            anim.Play("RobotLaserAttackAnim");
+            anim.SetTrigger("Attacked");
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPointT.position, AttackRange, PlayerLayer);
 
             foreach (Collider2D player in hitPlayer)
@@ -52,7 +51,7 @@ public class EnemyAttack : MonoBehaviour
     }
     IEnumerator onDeath()
     {
-        anim.SetBool("Died", true);
+        anim.SetTrigger("Died");
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
     }

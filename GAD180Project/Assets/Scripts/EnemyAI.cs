@@ -92,7 +92,6 @@ public class EnemyAI : MonoBehaviour
         }
         anim.enabled = true;
         anim.SetTrigger("Died");
-        anim.Play("RobotDeathAnim");
         
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);

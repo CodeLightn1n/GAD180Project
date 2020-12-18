@@ -11,7 +11,10 @@ public class Health : MonoBehaviour
     public void Start()
     {
         Dead = false;
-        HP = 1;
+        if(HP == 0)
+        {
+            HP = 1;
+        }
     }
     public void GetHit()
     {
