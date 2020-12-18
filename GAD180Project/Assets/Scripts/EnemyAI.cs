@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     public Animator anim;
     public Health health;
     public EnemyAttack EA;
+    public SceneManager SceneManager;
     private void Start()
     {
         Player = GameObject.Find("Player");
@@ -24,7 +26,6 @@ public class EnemyAI : MonoBehaviour
         if(Player == null)
         {
             FindPlayer();
-            Debug.Log("Find the player");
         }
         PlayerPos = Player.gameObject.transform.position;
         if(PD.PlayerCollided)
@@ -35,6 +36,7 @@ public class EnemyAI : MonoBehaviour
         {
             Patrol();
         }
+        
     }
     private void TrackPlayer()
     {
@@ -92,7 +94,12 @@ public class EnemyAI : MonoBehaviour
         }
         anim.enabled = true;
         anim.SetTrigger("Died");
-        
+
+        if (this.gameObject.name == "RobotBoss")
+        {
+            SceneManager.LoadScene(0);
+        }
+
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
 
@@ -105,4 +112,5 @@ public class EnemyAI : MonoBehaviour
     {
         Player = GameObject.Find("Player");
     }
+    
 }
