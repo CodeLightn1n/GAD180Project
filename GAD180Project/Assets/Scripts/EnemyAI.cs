@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     public Animator anim;
     public Health health;
     public EnemyAttack EA;
+    public GameManager GameManager;
     public SceneManager SceneManager;
     private void Start()
     {
@@ -95,8 +96,16 @@ public class EnemyAI : MonoBehaviour
         anim.enabled = true;
         anim.SetTrigger("Died");
 
-        if (this.gameObject.name == "RobotBoss")
+        if(this.gameObject.name == "RobotBoss")
         {
+            for(int i = 0; i < 6; i++)
+            {
+                GameManager.WinText.gameObject.SetActive(true);
+                yield return new WaitForSeconds(1);
+                GameManager.WinText.gameObject.SetActive(false);
+                yield return new WaitForSeconds(1);
+            }
+
             SceneManager.LoadScene(0);
         }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6024624212835022830}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14530de3e1cc1444ea4b7d800a87ba7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1989263155731668524, guid: cf8c74e58e8f7a145bb929cd52491c7e,
+  playerPrefab: {fileID: 1989263155731668948, guid: cf8c74e58e8f7a145bb929cd52491c7e,
     type: 3}
   currentRespawn: {fileID: 0}
