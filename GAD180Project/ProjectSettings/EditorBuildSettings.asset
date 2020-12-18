@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Josh Scene.unity
     guid: 936bc5f5e103be54dbe75b0bf310a606
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TomasLevel.unity
     guid: c3f04aae3ddd99447bb19f967e0acfcc
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: f25bd3909e1d0b7468a612a247724806
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 7f848a7f3e83d0e43a61d3f228f934b2
   m_configObjects: {}
