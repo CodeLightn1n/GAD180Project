@@ -26,7 +26,13 @@ public class Player : MonoBehaviour
             Debug.Log("Current RespawnPoint" + gm.currentRespawn + "/n" + "Collision Game Object" + collision.gameObject);
             Debug.Log("Saved Respawn Point");
         }
+        if (collision.gameObject.tag == "Trap")
+        {
+            Death();
+        }
     }
+    
+    
     public void Death()
     {
         
